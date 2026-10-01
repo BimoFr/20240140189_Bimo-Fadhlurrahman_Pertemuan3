@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kenali UMKM pengrajin batik dan tenun serta pilih produk untuk pemesanan.">
+    <title>UMKM Pengrajin Batik dan Tenun</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Lewati ke konten</a>
+
+    <header class="site-header" id="top">
+        <div class="container header-inner">
+            <a class="brand" href="#top" aria-label="Beranda UMKM Batik dan Tenun">
+                <span class="brand-mark" aria-hidden="true">BT</span>
+                <span>Pengrajin Batik &amp; Tenun</span>
+            </a>
+            <nav class="primary-nav" aria-label="Navigasi utama">
+                <a href="#profile">Profil Kami</a>
+                <a href="#pesan">Pemesanan</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="hero container" aria-labelledby="page-title">
+            <div class="hero-copy">
+                <p class="eyebrow">Karya tangan Indonesia</p>
+                <h1 id="page-title">UMKM Pengrajin Batik dan Tenun</h1>
+                <p>Warisan budaya, karya tangan anak bangsa. Setiap motif dibuat dengan ketelitian dan cerita.</p>
+                <a class="button-link" href="#pesan">Lihat pilihan produk</a>
+            </div>
+            <figure class="hero-image">
+                <img src="batik.webp" alt="Pengrajin sedang melukis motif batik pada kain dengan canting">
+                <figcaption>Proses membatik dengan canting</figcaption>
+            </figure>
+        </section>
+
+        <div class="container content-grid">
+            <section class="content-section" id="profile" aria-labelledby="profile-title">
+                <p class="eyebrow">Tentang kami</p>
+                <h2 id="profile-title">Profil Kami</h2>
+                <p>Kami adalah UMKM pengrajin batik dan tenun yang mengolah warisan budaya menjadi karya untuk digunakan sehari-hari.</p>
+                <p>Dengan proses yang dikerjakan secara teliti, setiap kain membawa kekhasan motif dan sentuhan tangan pengrajinnya.</p>
+            </section>
+
+            <section class="content-section order-section" id="pesan" aria-labelledby="order-title">
+                <p class="eyebrow">Mulai dari sini</p>
+                <h2 id="order-title">Formulir Pemesanan</h2>
+                <p>Pilih produk yang ingin Anda pesan.</p>
+                <form id="order-form">
+                    <div class="form-field">
+                        <label for="nama">Nama pemesan</label>
+                        <input type="text" id="nama" name="nama" autocomplete="name" required>
+                    </div>
+                    <fieldset>
+                        <legend>Pilihan produk</legend>
+                        <label class="radio-option" for="kain">
+                            <input type="radio" name="produk" id="kain" value="Kain Batik" required>
+                            <span>Kain Batik</span>
+                        </label>
+                        <label class="radio-option" for="pakaian">
+                            <input type="radio" name="produk" id="pakaian" value="Pakaian Jadi (Kemeja/Blus)">
+                            <span>Pakaian Jadi (Kemeja/Blus)</span>
+                        </label>
+                    </fieldset>
+                    <button type="submit">Kirim pilihan</button>
+                    <p class="form-note">Formulir ini belum terhubung ke sistem pemesanan.</p>
+                    <p class="form-status" id="order-status" role="status" aria-live="polite" hidden></p>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; UMKM Pengrajin Batik dan Tenun</p>
+        </div>
+    </footer>
+
+    <script>
+        const orderForm = document.querySelector("#order-form");
+        const orderStatus = document.querySelector("#order-status");
+
+        orderForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(orderForm);
+            const name = formData.get("nama");
+            const product = formData.get("produk");
+
+            orderStatus.textContent = `Terima kasih, ${name}. Pilihan ${product} tercatat di halaman ini, tetapi belum dikirim ke sistem.`;
+            orderStatus.hidden = false;
+        });
+    </script>
+</body>
+</html>
